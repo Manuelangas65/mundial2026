@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+
 import '../models/partido.dart';
 
-class PartidoCard extends StatelessWidget {
+class PartidoCard
+    extends StatelessWidget {
+
   final Partido partido;
   final VoidCallback onTap;
 
@@ -12,30 +15,85 @@ class PartidoCard extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return Card(
-      elevation: 3,
-      margin: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 8,
-      ),
-      child: ListTile(
-        leading: const Icon(
-          Icons.sports_soccer,
-          size: 35,
+  Widget build(
+      BuildContext context) {
+
+    return GestureDetector(
+
+      onTap: onTap,
+
+      child: Container(
+
+        margin:
+            const EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 10,
         ),
-        title: Text(
-          "${partido.equipoLocal} vs ${partido.equipoVisitante}",
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
+
+        padding:
+            const EdgeInsets.all(18),
+
+        decoration:
+            BoxDecoration(
+          color: Colors.white,
+          borderRadius:
+              BorderRadius.circular(
+            20,
           ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 5,
+            )
+          ],
         ),
-        subtitle: Text(
-          "${partido.golesLocal} - ${partido.golesVisitante}",
+
+        child: Column(
+
+          children: [
+
+            Text(
+              "${partido.equipo1} vs ${partido.equipo2}",
+              style:
+                  const TextStyle(
+                fontSize: 20,
+                fontWeight:
+                    FontWeight.bold,
+              ),
+            ),
+
+            const SizedBox(
+              height: 10,
+            ),
+
+            Text(
+              "${partido.golesE1} - ${partido.golesE2}",
+              style:
+                  const TextStyle(
+                fontSize: 32,
+                fontWeight:
+                    FontWeight.bold,
+              ),
+            ),
+
+            const SizedBox(
+              height: 8,
+            ),
+
+            const Text(
+              "Tocar para editar",
+              style: TextStyle(
+                color:
+                    Colors.grey,
+              ),
+            ),
+
+          ],
+
         ),
-        trailing: const Icon(Icons.edit),
-        onTap: onTap,
+
       ),
+
     );
   }
 }

@@ -1,11 +1,19 @@
-const pool = require('./config/db');//importamos db.js para usar la conexion de ahí 
-const {obtenerPartidos} = require('./controllers/partidosController');//para poder usar la funcion de pedir los partideishons
 const express = require('express');
+const cors = require('cors');
+
+const { obtenerPartidos } = require('./controllers/partidosController');
+
 const app = express();
 const PORT = 3000;
+
+app.use(cors({
+    origin: '*'
+}));
+
+app.use(express.json());
 
 app.get('/partidos', obtenerPartidos);
 
 app.listen(PORT, () => {
-    console.log(`servidor corriendo en el puerto ${PORT}`)
+    console.log(`servidor corriendo en el puerto ${PORT}`);
 });

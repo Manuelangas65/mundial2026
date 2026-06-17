@@ -5,11 +5,13 @@ const {Pool} = require('pg'); //this is la sintaxis para importar vale? y el pg 
 
 const pool = new Pool({//for example aqui estamos creando una conexión con la BD
     host: '31.97.102.106',
-    puerto: 5432,
+    port: 5432,
     user: 'administrador',
-    password: 'Penjamo-123$',
+    password: 'Penjamo-123',
     database: 'mundial_2026'
 });
 
 module.exports = pool;//esto permite que importando este archivo en ptros archivos, ese archivo pueda usar esta conexión
+
+
 
