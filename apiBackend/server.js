@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
-const { obtenerPartidos } = require('./controllers/partidosController');
+const { obtenerPartidos, actualizarMarcador } = require('./controllers/partidosController');
 
 const app = express();
 const PORT = 3000;
@@ -13,6 +13,7 @@ app.use(cors({
 app.use(express.json());
 
 app.get('/partidos', obtenerPartidos);
+app.put('/partidos/:id', actualizarMarcador);
 
 app.listen(PORT, () => {
     console.log(`servidor corriendo en el puerto ${PORT}`);

@@ -25,6 +25,36 @@ const obtenerPartidos = async (req, res) => {//this function es para pedirle los
     }
 };
 
+
+const actualizarMarcador = async(req, res) =>{
+    try{
+        const {id} = req.params;
+        const {goles_e1, goles_e2} = req.body;
+
+        await pool.query(
+            `UPDATE partidos
+            SET goles_e1 = $1,
+                goles_e2 = $2
+            WHERE id_partido = $3`,
+            [goles_e1, goles_e2, id]
+        );
+
+        res.json({
+            mensaje:'Marcador actualizado correctamente'
+        });
+    
+    }
+    catch(error){
+        console.error(error);
+        res.status(500).json({
+            mensaje:'Error al actualizar el marcador'
+        });
+
+    }
+
+};
+
 module.exports = {
-    obtenerPartidos
-};//igual ponemos la exportacion por si otro archivo lo necesita, como la conexion de db.js
+    obtenerPartidos,
+    actualizarMarcador
+}; 

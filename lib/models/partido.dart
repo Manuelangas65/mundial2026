@@ -1,6 +1,7 @@
 // esta clase nos sirve para representar un partido dentro de la aplicación
 // aqui guardaremos toda la informacion que viene de la API
 class Partido {
+  //esto representan los campos que vienen desde postgres
   final int idPartido;
   final String equipo1;
   final String equipo2;
@@ -8,7 +9,7 @@ class Partido {
   int golesE2;
   final String fecha;
 
-  // constructor del objeto Partido
+  // constructor del objeto Partido, sirve para crear objetos
   // required obliga a que todos estos valores sean enviados al crear el objeto
   Partido({
     required this.idPartido,
