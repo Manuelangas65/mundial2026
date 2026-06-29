@@ -4,16 +4,14 @@ import '../models/partido.dart';
 import '../services/api_service.dart';
 import '../widgets/partido_card.dart';
 import 'puntuacion_page.dart';
-
 class PartidosPage extends StatefulWidget {
-  //stateful es que tiene estados vale? cuando la pantalla de reconstruye
+  // 1. Añadimos el parámetro 'token' en el constructor de la pantalla
+  final String token;
 
-  const PartidosPage({super.key});
+  const PartidosPage({super.key, required this.token});
 
   @override
-  State<PartidosPage>
-  createState() => //aqqui creamos un estado para la pantalla que es donde estrán los partiods
-      _PartidosPageState();
+  State<PartidosPage> createState() => _PartidosPageState();
 }
 
 class _PartidosPageState extends State<PartidosPage> {
@@ -22,14 +20,15 @@ class _PartidosPageState extends State<PartidosPage> {
   @override
   void initState() {
     super.initState();
-
     cargarPartidos();
   }
 
   void cargarPartidos() {
-    futurosPartidos =
-        ApiService.obtenerPartidos(String token); //pedimos al api que le diga a la BD que nos amnde los partidos para ponerlos en la pantalla
+    // 2. Usamos 'widget.token' para acceder al token que guardamos arriba
+    futurosPartidos = ApiService.obtenerPartidos(widget.token); 
   }
+  
+  // ... El resto de tu método build() se queda exactamente igual ...
 
   @override
   Widget build(BuildContext context) {
