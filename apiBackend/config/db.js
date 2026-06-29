@@ -10,8 +10,4 @@ const pool = new Pool({//for example aqui estamos creando una conexión con la B
     password: 'Penjamo-123',
     database: 'mundial_2026'
 });
-
 module.exports = pool;//esto permite que importando este archivo en ptros archivos, ese archivo pueda usar esta conexión
-
-
-
